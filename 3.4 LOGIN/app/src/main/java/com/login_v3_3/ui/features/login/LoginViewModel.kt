@@ -12,9 +12,7 @@ class LoginViewModel : ViewModel(){
     val usuarioRepository : UsuarioRepository = UsuarioRepository()
     var loginUiState : LoginUiState? = null
 
-    // se supone que necesitamos todas las variables stateful
-    //var emailState by remember { mutableStateOf("") }
-
+    // los stateful los tenemos en loginUiState
 
     fun onLoginEvent(loginEvent : LoginEvent)
     {
