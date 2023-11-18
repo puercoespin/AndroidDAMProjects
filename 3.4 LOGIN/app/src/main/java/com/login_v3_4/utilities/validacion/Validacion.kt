@@ -1,6 +1,4 @@
-package com.login_v3_3.utilities.validacion
-
-import java.lang.Error
+package com.login_v3_4.utilities.validacion
 
 // clase que controla si hay error o no, crearemos un objeto validacionState de este tipo
 //      que comprobará si la pass y demás es válida(?

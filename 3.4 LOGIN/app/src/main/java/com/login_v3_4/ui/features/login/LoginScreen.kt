@@ -1,36 +1,28 @@
-package com.login_v3_3.ui.features.login
+package com.login_v3_4.ui.features.login
 
-import android.util.Patterns
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Grade
-import androidx.compose.material.icons.filled.GroupAdd
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.ViewModel
 import com.login3_3.R
-import com.login_v3_3.ui.composables.CheckboxWithText
-import com.login_v3_3.ui.theme.ProyectoBaseTheme
-import com.login_v3_3.utilities.validacion.Validacion
+import com.login_v3_4.ui.composables.CheckboxWithText
+import com.login_v3_4.ui.theme.ProyectoBaseTheme
+import com.login_v3_4.utilities.validacion.Validacion
 import com.pmdm.login.ui.composables.CircularImageFromResource
 import com.pmdm.login.ui.composables.OutlinedTextFieldEmail
 import com.pmdm.login.ui.composables.OutlinedTextFieldPassword
-import com.pmdm.login.ui.composables.OutlinedTextFieldWithErrorState
-import java.util.regex.Pattern
+import kotlin.reflect.KFunction1
 
 
 @Composable
@@ -44,20 +36,20 @@ fun BotonFlotante(onClick: () -> Unit,texto:String) {
 
 @Composable
 fun LoginScreen(
-    emailState : String,
-    validacionEmailState : Validacion,
-    onValueChangeEmail :(String)->Unit,
+    emailState: String,
+    validacionEmailState: Validacion,
+    onValueChangeEmail: (String) -> Unit,
 
-    passwordState : String,
-    validacionPasswordState : Validacion,
+    passwordState: String,
+    validacionPasswordState: Validacion,
     onValueChangePassword: (String) -> Unit,
 
-    checkedState : Boolean,
-    onCheckedChange : (Boolean) -> Unit,
+    checkedState: Boolean,
+    onCheckedChange: (Boolean) -> Unit,
 
-    onLoginClick : () -> Unit,
+    onLoginClick: () -> Unit,
     hayErrores:Boolean,
-    mensajeErrorAñadido : String
+    mensajeErrorAñadido: String
 
 ) {
     ProyectoBaseTheme {
@@ -67,9 +59,7 @@ fun LoginScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ){
             CircularImageFromResource(R.drawable.usuario,"usuario")
-            //OutlinedTextFieldEmail(emailState,validacionEmailState,{emailState = it})
             OutlinedTextFieldEmail(emailState = emailState, validacionState = validacionEmailState, onValueChange = onValueChangeEmail)
-            //OutlinedTextFieldWithErrorState(passwordState,validacionPasswordState,{passwordState=it})
             OutlinedTextFieldPassword(passwordState = passwordState, validacionState = validacionPasswordState, onValueChange = onValueChangePassword)
             if(hayErrores)
             {
@@ -82,6 +72,8 @@ fun LoginScreen(
 
 }
 
+
+/*
 @Preview
 @Composable
 fun LoginScreenPreview()
@@ -125,4 +117,4 @@ fun LoginScreenPreview()
 
 
 }
-
+*/

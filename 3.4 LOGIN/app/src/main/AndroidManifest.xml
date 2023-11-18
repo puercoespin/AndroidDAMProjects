@@ -30,7 +30,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name="com.login_v3_3.ui.views.MainActivity"
+            android:name="com.login_v3_4.ui.views.MainActivity"
             android:exported="true"
             android:label="@string/login_v3_3"
             android:theme="@style/Theme.ProyectoBase">

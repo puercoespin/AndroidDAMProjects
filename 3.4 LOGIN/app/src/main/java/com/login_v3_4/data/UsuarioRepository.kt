@@ -1,7 +1,7 @@
-package com.login_v3_3.data
+package com.login_v3_4.data
 
-import com.login_v3_3.data.mocks.usuario.UsuarioDaoMock
-import com.login_v3_3.model.Usuario
+import com.login_v3_4.data.mocks.usuario.UsuarioDaoMock
+import com.login_v3_4.model.Usuario
 
 class UsuarioRepository {
 
@@ -15,7 +15,11 @@ class UsuarioRepository {
     fun get(login: String): Usuario? {
         return get().find { it.login == login }
     }
-
+    fun existingUser(login: String,password:String) : Boolean
+    {
+        val loginExistente = get(login)
+        return loginExistente != null && loginExistente.password == password
+    }
     fun insert(usuarioRemoto: Usuario) {
         usuarioDaoMock.insert(usuarioRemoto.toUsuarioMock())
     }

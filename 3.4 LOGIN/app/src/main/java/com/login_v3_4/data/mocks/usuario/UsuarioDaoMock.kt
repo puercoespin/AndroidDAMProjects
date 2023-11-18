@@ -1,10 +1,10 @@
-package com.login_v3_3.data.mocks.usuario
+package com.login_v3_4.data.mocks.usuario
 
 class UsuarioDaoMock {
 
     val usuarios = mutableListOf<UsuarioMock>(
-        UsuarioMock("usuario1","password1"),
-        UsuarioMock("usuario2", "password2")
+        UsuarioMock("usuario1@gmail.com","password1"),
+        UsuarioMock("usuario2@gmail.com", "password2")
     )
 
 
