@@ -2,14 +2,17 @@ package com.login_v3_4.data
 
 import com.login_v3_4.data.mocks.usuario.UsuarioDaoMock
 import com.login_v3_4.model.Usuario
-import javax.inject.Inject
 
 
-class UsuarioRepository @Inject constructor(
+/*
+    Usuario Repository es la base de datos de la aplicación en sí, donde usaremos los métodos
+        de conversión para obtener objetos en memoria de nuestra DB (en este caso falsa)
+ */
+
+
+class UsuarioRepository {
+
     private val usuarioDaoMock: UsuarioDaoMock = UsuarioDaoMock()
-) {
-
-
 
     fun get(): MutableList<Usuario> {
 

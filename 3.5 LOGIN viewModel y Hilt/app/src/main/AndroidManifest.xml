@@ -19,11 +19,12 @@
     -->
 
     <application
+        android:name="com.login_v3_4.MiAplicacion"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/login_v3_3"
+        android:label="@string/login_v3_4_hilt"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoBase"
@@ -32,7 +33,7 @@
         <activity
             android:name="com.login_v3_4.ui.views.MainActivity"
             android:exported="true"
-            android:label="@string/login_v3_3"
+            android:label="@string/login_v3_4_hilt"
             android:theme="@style/Theme.ProyectoBase">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

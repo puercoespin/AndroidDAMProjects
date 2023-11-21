@@ -7,36 +7,23 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import com.login_v3_4.data.UsuarioRepository
 import com.login_v3_4.utilities.validacion.Validacion
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 
-@HiltViewModel
-class LoginViewModel @Inject constructor(
-    private val usuarioRepository : UsuarioRepository = UsuarioRepository()
-) : ViewModel(){
+class LoginViewModel : ViewModel(){
+
+    val usuarioRepository : UsuarioRepository = UsuarioRepository()
+    var loginUiState : LoginUiState by mutableStateOf(LoginUiState())
 
 
-    var loginUiState : LoginUiState? = null
-
-    // pasamos los stateful de loginScreen aqui
-    var emailState by mutableStateOf("")
-    var passwordState by mutableStateOf("")
     var validacionEmailState by mutableStateOf(Validacion("", false))
     var validacionPasswordState by mutableStateOf(Validacion("", false))
-    var checkboxValue by mutableStateOf(false)
+
     var hayErrores by mutableStateOf(false)
     var errorMensaje by mutableStateOf("")
 
     fun onLoginEvent(loginEvent : LoginEvent)
     {
         // los estados de validación cambiarán dependiendo de si el email o la pass son erroneas
-        validacionEmailState.hayError = !Patterns.EMAIL_ADDRESS.matcher(emailState).matches()
-        validacionPasswordState.hayError = passwordState.length < 8
         // si hay algún error de cualquier tipo, lo ponemos a true
-        hayErrores = validacionEmailState.hayError || validacionPasswordState.hayError
-
-
-
 
         when(loginEvent)
         {
@@ -44,27 +31,30 @@ class LoginViewModel @Inject constructor(
                 // aquí controlamos el evento del textfield cambiado
                 // cambiremos el texto del textField y validaremos
 
-                emailState = loginEvent.cadena
-                validacionEmailState.hayError = !Patterns.EMAIL_ADDRESS.matcher(emailState).matches()
+               loginUiState=loginUiState.copy( login = loginEvent.cadena)
+                validacionEmailState.hayError = !Patterns.EMAIL_ADDRESS.matcher(loginEvent.cadena).matches()
                 validacionEmailState.mensajeError = "El email no cumple los requisitos"
 
             }
             is LoginEvent.PasswordChanged -> {
                 // aquí controlamos el evento del textfield cambiado
 
-                passwordState = loginEvent.cadena
-                validacionPasswordState.hayError = passwordState.length < 6
+                loginUiState=loginUiState.copy(password = loginEvent.cadena)
+                validacionPasswordState.hayError = loginEvent.cadena.length < 6
                 validacionPasswordState.mensajeError = "La contraseña debe tener más de 6 dígitos"
+
+            }
+            is LoginEvent.onCheckChanged ->{
+
+                loginUiState=loginUiState.copy(recordarPass = loginEvent.checked)
 
             }
             is LoginEvent.OnClickLoguearse -> {
                 // aquí controlamos el caso de click al botón
                 if(!hayErrores)
                 {
-                    if(usuarioRepository.existingUser(emailState,passwordState))
+                    if(usuarioRepository.existingUser(login = loginUiState.login,loginUiState.password))
                     {
-                        loginUiState = LoginUiState(emailState,passwordState,true)
-
                         ///
                         // Codigo a continuación de prueba (Borrar)
                         ///
@@ -73,7 +63,6 @@ class LoginViewModel @Inject constructor(
                     }
                     else{
                         errorMensaje = "Credenciales erroneas"
-                        loginUiState = null
                     }
                 }
                 else{
@@ -81,10 +70,6 @@ class LoginViewModel @Inject constructor(
                 }
             }
         }
-    }
-
-    fun onCheckboxChanged(checked: Boolean) {
-        checkboxValue = checked
     }
 
 }
