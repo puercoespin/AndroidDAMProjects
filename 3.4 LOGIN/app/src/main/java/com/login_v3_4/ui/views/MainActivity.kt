@@ -28,15 +28,10 @@ class MainActivity : ComponentActivity() {
                 ) {
                    
                     LoginScreen(
-                        emailState = viewModel.emailState,
-                        validacionEmailState =viewModel.validacionEmailState ,
-                        onValueChangeEmail = {viewModel.onLoginEvent(LoginEvent.LoginChanged(it))},
-                        passwordState = viewModel.passwordState,
+                        loginUiState = viewModel.loginUiState,
+                        validacionEmailState = viewModel.validacionEmailState,
                         validacionPasswordState = viewModel.validacionPasswordState,
-                        onValueChangePassword = {viewModel.onLoginEvent(LoginEvent.PasswordChanged(it))},
-                        checkedState = viewModel.checkboxValue,
-                        onCheckedChange = viewModel::onCheckboxChanged,
-                        onLoginClick = {viewModel.onLoginEvent(LoginEvent.OnClickLoguearse)},
+                        loginEvent = viewModel::onLoginEvent,
                         hayErrores = viewModel.hayErrores,
                         mensajeErrorAñadido = viewModel.errorMensaje
                     )

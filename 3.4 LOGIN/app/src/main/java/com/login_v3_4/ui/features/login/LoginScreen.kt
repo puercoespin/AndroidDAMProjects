@@ -36,18 +36,12 @@ fun BotonFlotante(onClick: () -> Unit,texto:String) {
 
 @Composable
 fun LoginScreen(
-    emailState: String,
+    loginUiState: LoginUiState,
+
     validacionEmailState: Validacion,
-    onValueChangeEmail: (String) -> Unit,
-
-    passwordState: String,
     validacionPasswordState: Validacion,
-    onValueChangePassword: (String) -> Unit,
 
-    checkedState: Boolean,
-    onCheckedChange: (Boolean) -> Unit,
-
-    onLoginClick: () -> Unit,
+    loginEvent: (LoginEvent)->Unit,
     hayErrores:Boolean,
     mensajeErrorAñadido: String
 
@@ -59,17 +53,22 @@ fun LoginScreen(
             horizontalAlignment = Alignment.CenterHorizontally
         ){
             CircularImageFromResource(R.drawable.usuario,"usuario")
-            OutlinedTextFieldEmail(emailState = emailState, validacionState = validacionEmailState, onValueChange = onValueChangeEmail)
-            OutlinedTextFieldPassword(passwordState = passwordState, validacionState = validacionPasswordState, onValueChange = onValueChangePassword)
+
+            OutlinedTextFieldEmail(emailState = loginUiState.login, validacionState = validacionEmailState,
+                onValueChange = {loginEvent(LoginEvent.LoginChanged(it))})
+
+            OutlinedTextFieldPassword(passwordState = loginUiState.password, validacionState = validacionPasswordState,
+                onValueChange = {loginEvent(LoginEvent.PasswordChanged(it))})
+
             if(hayErrores)
             {
                 Text(text = mensajeErrorAñadido)
             }
-            CheckboxWithText(label = "Recordar contraseña", checkedState = checkedState, onCheckedChange = onCheckedChange)
-            BotonFlotante(onLoginClick,"Entrar")
+            CheckboxWithText(label = "Recordar contraseña", checkedState = loginUiState.recordarPass,
+                onCheckedChange = {loginEvent(LoginEvent.onCheckChanged(it))})
+            BotonFlotante(onClick = { loginEvent(LoginEvent.OnClickLoguearse) },texto="Entrar")
         }
     }
-
 }
 
 
