@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Login3.4_hiltyviewmodel"
+rootProject.name = "Login3.5"
 include(":app")

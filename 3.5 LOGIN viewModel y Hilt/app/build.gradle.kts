@@ -2,18 +2,17 @@ plugins {
     id ("com.android.application")
     id ("org.jetbrains.kotlin.android")
 
-    // Plugin para que Gradle use Ksp
     id("com.google.devtools.ksp")
-    // Plugin para que Gradle use Hilt
     id ("com.google.dagger.hilt.android")
+
 }
 
 android {
-    namespace = "com.login3_3"
+    namespace = "com.login3_5"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.login3_3"
+        applicationId = "com.login3_5"
         minSdk = 28
         targetSdk = 34
         versionCode = 1
@@ -81,6 +80,7 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
 
     implementation("com.google.dagger:hilt-android:2.44")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
