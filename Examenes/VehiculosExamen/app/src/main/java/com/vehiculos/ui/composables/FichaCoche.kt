@@ -29,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.ImageBitmap
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.imageResource
@@ -40,6 +41,7 @@ import com.pmdm.login.ui.composables.ImageCommonTest
 import com.vehiculos.R
 import com.vehiculos.ui.features.cochesFicha.CochesEvent
 import com.vehiculos.ui.features.cochesFicha.FichaCocheUiState
+import com.vehiculos.ui.features.reserva.ReservaUiState
 
 
 @Composable
@@ -111,6 +113,15 @@ fun CardCoche(
     coche: FichaCocheUiState,
     onCochesEvent: (CochesEvent) -> Unit
 ) {
+    val painter : Painter = when(coche.fabricante)
+    {
+        "Audi"-> painterResource(id = R.drawable.audi)
+        "BMW"->painterResource(id = R.drawable.bmw)
+        "Ford"->painterResource(id = R.drawable.ford)
+        "Mercedes"->painterResource(id = R.drawable.mercedes)
+        "Volkswagen"->painterResource(id = R.drawable.volkswagen)
+        else -> painterResource(id = R.drawable.foto)
+    }
     Card(
         modifier = Modifier.wrapContentSize()
     )
@@ -125,6 +136,8 @@ fun CardCoche(
                     contentDescription = "Foto de un coche",
                     contentScale = ContentScale.Crop,
                     modifier = Modifier
+                        .size(400.dp)
+                        .fillMaxWidth()
                 )
 
                 Column {
@@ -157,7 +170,7 @@ fun CardCoche(
                 modifier = Modifier
                     .padding(12.dp)
             )
-            BotonFlotante(onClick = {onCochesEvent}, texto = "Reservar")
+            BotonFlotante(onClick = {onCochesEvent(CochesEvent.onReservarClick)}, texto = "Reservar")
 
         }
     }
@@ -166,6 +179,8 @@ fun CardCoche(
 @Preview
 @Composable
 fun cochePreview() {
+
+    var reservaUiState  = ReservaUiState()
 
     var pruebaCoche = FichaCocheUiState(
         "fabricante1",

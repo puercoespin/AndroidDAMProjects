@@ -15,6 +15,7 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -37,7 +38,7 @@ fun CocheScreen(
     cocheUiState: SnapshotStateList<FichaCocheUiState>,
     reservaUiState: ReservaUiState,
     onCochesEvent: (CochesEvent) -> Unit,
-    coches:MutableList<FichaCocheUiState>
+    coches: MutableList<FichaCocheUiState>
 ) {
 
     ProyectoBaseTheme {
@@ -48,8 +49,11 @@ fun CocheScreen(
             HorizontalPager(
                 state = pageState,
                 modifier = Modifier
-            ) {
-                page->CardCoche(coche = cocheUiState[page], onCochesEvent = onCochesEvent)
+            ) { page ->
+                CardCoche(coche = cocheUiState[page], onCochesEvent = onCochesEvent)
+                if (reservaUiState.mostrarReserva) {
+                    ReservaDialogue(reservaUiState = reservaUiState,cocheUiState[page],onCochesEvent)
+                }
             }
 
             Row(
@@ -73,14 +77,8 @@ fun CocheScreen(
                 }
             }
 
-/*
-            if()
-            {
-                ReservaDialogue(reservaUiState = reservaUiState)
-            }
-*/
-
         }
+
 
     }
 }

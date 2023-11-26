@@ -68,6 +68,9 @@ fun LoginScreen(
                 onCheckedChange = {loginEvent(LoginEvent.onCheckChanged(it))})
             BotonFlotante(onClick = { loginEvent(LoginEvent.OnClickLoguearse) },texto="Entrar")
         }
+
+
+
     }
 }
 

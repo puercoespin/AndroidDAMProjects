@@ -1,5 +1,7 @@
 package com.vehiculos.ui.features.cochesFicha
 
+import androidx.compose.ui.graphics.painter.Painter
+
 data class FichaCocheUiState(
     var fabricante: String ="",
     var modelo: String ="",
