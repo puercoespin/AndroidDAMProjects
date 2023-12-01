@@ -7,11 +7,29 @@ import com.AGENDABASE.ui.features.vercontactos.toEnum
 import java.util.EnumSet
 
 
-fun ContactoMock.toContacto(): Contacto {
-    val categoriasSet = CatergoriaUiState()
+fun ContactoMock.toContacto() = Contacto(
+    id = id,
+    nombre = nombre,
+    apellidos = apellidos,
+    foto = foto,
+    correo = correo,
+    telefono = telefono,
+    categorias = EnumSet.noneOf(Contacto.Categorias::class.java).apply {
+        categorias.forEach { add(it.toCategorias()) }
+    }
+)
 
-    return Contacto(id, nombre, apellidos, foto, correo, telefono, categoriasSet.toEnum())
-}
+fun Contacto.toContactoMock() = Contacto(
+    id = id,
+    nombre = nombre,
+    apellidos = apellidos,
+    foto = foto,
+    correo = correo,
+    telefono = telefono,
+    categorias = EnumSet.noneOf(Contacto.Categorias::class.java).apply {
+        categorias.forEach { add(it.toCategorias()) }
+    }
+)
 
 fun ContactoMock.Categorias.toContactoCategoria():Contacto.Categorias{
     return Contacto.Categorias.values()[this.ordinal]
@@ -20,7 +38,12 @@ fun Contacto.Categorias.toContactoMockCategoria():ContactoMock.Categorias{
     return ContactoMock.Categorias.values()[this.ordinal]
 }
 
-fun Contacto.toContactoMock():ContactoMock{
-    return ContactoMock(id=this.id, nombre, apellidos, foto,
-        correo, telefono, EnumSet.copyOf(categorias.map { it.toContactoMockCategoria() }))
+
+
+fun ContactoMock.Categorias.toCategorias() = when (this) {
+    ContactoMock.Categorias.Amigos -> Contacto.Categorias.Amigos
+    ContactoMock.Categorias.Trabajo -> Contacto.Categorias.Trabajo
+    ContactoMock.Categorias.Familia -> Contacto.Categorias.Familia
+    ContactoMock.Categorias.Emergencias -> Contacto.Categorias.Emergencias
 }
+

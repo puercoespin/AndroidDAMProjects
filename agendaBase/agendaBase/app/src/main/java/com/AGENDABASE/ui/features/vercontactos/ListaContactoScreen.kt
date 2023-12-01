@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.FloatingActionButton
@@ -41,8 +42,25 @@ fun ListaContactosScreen(
             contentPadding = PaddingValues(all = 4.dp),
             verticalArrangement = Arrangement.spacedBy(4.dp)
         ){
+           items(
+                contactosState,
+                key={it.id}
+            )
+            {contacto ->
+                ContactoListItem(
+                    modifier = Modifier.animateItemPlacement(),
+                    contactoUiState = contacto,
+                    seleccionadoState = contactoSeleccionadoState
+                        ?.let { it.id == contacto.id } ?: false,
+                    onContactoClicked = onContactoClicked,
+                    onEditClicked = onEditClicked,
+                    onDeleteClicked = onDeleteClicked
+                )
 
-            items(
+            }
+
+
+         /*   items(
                 contactosState.size,
                 key = {it}
             ) { contacto ->
@@ -55,7 +73,8 @@ fun ListaContactosScreen(
                     onEditClicked = onEditClicked,
                     onDeleteClicked = onDeleteClicked
                 )
-            }
+            }*/
+
         }
         FloatingActionButton(
             modifier = Modifier
