@@ -59,22 +59,6 @@ fun ListaContactosScreen(
 
             }
 
-
-         /*   items(
-                contactosState.size,
-                key = {it}
-            ) { contacto ->
-                ContactoListItem(
-                    modifier = Modifier.animateItemPlacement(),
-                    contactoUiState = contactosState[contacto],
-                    seleccionadoState = contactoSeleccionadoState
-                        ?.let { it.id == contacto } ?: false,
-                    onContactoClicked = onContactoClicked,
-                    onEditClicked = onEditClicked,
-                    onDeleteClicked = onDeleteClicked
-                )
-            }*/
-
         }
         FloatingActionButton(
             modifier = Modifier

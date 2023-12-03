@@ -48,6 +48,13 @@ import com.AGENDABASE.ui.theme.ProyectoBaseTheme
 
 // Muestra los iconos con las categorías del contacto, por eso
 // recibe únicamente el estado de las categorías.
+
+/*
+    creamos un record con dos valores, visible e icono y luego una lista de esta data class
+
+    recorremos con un bucle esta lista, si el elemento actual tiene un icono en visible, mostraremos el icono asociado
+
+ */
 @Composable
 fun Categorias(
     categoriasState: CatergoriaUiState
