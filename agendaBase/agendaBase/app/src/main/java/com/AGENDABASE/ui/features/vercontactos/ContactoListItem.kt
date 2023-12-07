@@ -145,6 +145,8 @@ fun DatosContacto(
     }
 }
 
+
+
 @Preview(
     name = "PORTRAIT",
     device = "spec:width=360dp,height=800dp,dpi=480",

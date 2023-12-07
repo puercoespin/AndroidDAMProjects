@@ -55,7 +55,7 @@ fun ImagenContacto(
                 color = MaterialTheme.colorScheme.inversePrimary,
                 shape = CircleShape
             ),
-        contentScale = ContentScale.Crop,
+        contentScale = ContentScale.Crop
         )
 
 }

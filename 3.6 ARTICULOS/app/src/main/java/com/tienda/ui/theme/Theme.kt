@@ -1,4 +1,4 @@
-package com.cambiame.ui.theme
+package com.tienda.ui.theme
 
 import android.app.Activity
 import android.os.Build

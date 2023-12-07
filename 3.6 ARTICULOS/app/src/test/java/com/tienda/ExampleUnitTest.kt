@@ -1,4 +1,4 @@
-package com.cambiame
+package com.tienda
 
 import org.junit.Test
 

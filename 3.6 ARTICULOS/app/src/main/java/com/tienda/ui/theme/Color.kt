@@ -1,4 +1,4 @@
-package com.cambiame.ui.theme
+package com.tienda.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
