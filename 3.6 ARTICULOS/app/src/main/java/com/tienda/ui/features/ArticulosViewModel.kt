@@ -14,7 +14,7 @@ class ArticulosViewModel : ViewModel() {
     val pedidoRepository : PedidoRepository = PedidoRepository()
 
     /*
-        Como sólo necesitamos el pedido 1, lo hacemos a la fuerza,
+        Como sólo necesitamos el pedido 1, lo hacemos directamente,
 
         Si necesitaramos un pedido en concreto, ya lo gestionaríamos con eventos
      */
@@ -27,7 +27,7 @@ class ArticulosViewModel : ViewModel() {
 
     )
 
-    // mio
+    //
     /*
         en articulodepedido tenemos la id del articulo que necesitaremos para la
             url de la imagen en ArticuloConPedido
