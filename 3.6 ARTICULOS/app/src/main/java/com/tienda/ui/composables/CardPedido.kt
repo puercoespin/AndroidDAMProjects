@@ -22,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -39,6 +40,9 @@ fun CardPedido(
     imagen : String
 )
 {
+    val contexto = LocalContext.current
+    val imageResource = contexto.resources.getIdentifier(imagen,null,contexto.packageName)
+
     ProyectoBaseTheme {
         ElevatedCard(
             elevation = CardDefaults.cardElevation(
@@ -58,10 +62,14 @@ fun CardPedido(
                         .padding(8.dp),
                     contentAlignment = Alignment.Center
                 )
+
+
                 {
                     Image(
                         // falta poner su imagen, como es url no sé cómo se le dice un path
-                        painter = painterResource(id = R.drawable.imagen1),
+                        painter = painterResource(
+                            id = imageResource
+                        ),
                         contentDescription = "$imagen",
                         modifier = Modifier
                             .aspectRatio(ratio = 1f)
