@@ -118,5 +118,5 @@ fun CardPedido(
 @Composable
 fun CardPreview()
 {
-
+    CardPedido(precio = 10f, cantidad = 10, imagen = "drawable/imagen1")
 }
