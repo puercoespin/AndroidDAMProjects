@@ -11,8 +11,10 @@ import com.AGENDABASE.ui.features.vercontactos.ListaContactosScreen
 import com.AGENDABASE.ui.features.vercontactos.ListaContactosViewModel
 import com.AGENDABASE.ui.theme.ProyectoBaseTheme
 import com.pmdm.agenda.ui.features.vercontactos.ItemListaContactosEvent
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -8,11 +8,16 @@ import com.AGENDABASE.data.ContactoRepository
 import com.pmdm.agenda.ui.features.vercontactos.ContactoUiState
 import com.pmdm.agenda.ui.features.vercontactos.ItemListaContactosEvent
 import com.pmdm.agenda.ui.features.vercontactos.toContactoUiState
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ListaContactosViewModel : ViewModel() {
+@HiltViewModel
+class ListaContactosViewModel @Inject constructor(
+    private val contactoRepository: ContactoRepository
+) : ViewModel() {
 
     // Creamos un repositorio de contactos. Mejor inyectarlo con Hilt
-    private val contactoRepository = ContactoRepository();
+
     // Estado que nos permitirá gestionar el contacto actualmente
     // seleccionado, valdrá null si no hay ninguno
     var contatoSleccionadoState: ContactoUiState? by mutableStateOf(null)
