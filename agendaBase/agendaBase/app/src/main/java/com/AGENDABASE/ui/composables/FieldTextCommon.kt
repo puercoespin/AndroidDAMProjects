@@ -33,6 +33,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
+import com.pmdm.agenda.utilities.validacion.validadores.ValidaTelefono
+
 import com.pmdm.utilities.validacion.Validacion
 import com.pmdm.utilities.validacion.ValidacionCompuesta
 import com.pmdm.utilities.validacion.ValidadorCompuesto
@@ -40,7 +42,6 @@ import com.pmdm.utilities.validacion.validadores.ValidaCorreo
 import com.pmdm.utilities.validacion.validadores.ValidaLongitudMaximaTexto
 import com.pmdm.utilities.validacion.validadores.ValidaLongitudMinimaTexto
 import com.pmdm.utilities.validacion.validadores.ValidaNumeroEntero
-import com.pmdm.agenda.utilities.validacion.validadores.ValidaTelefono
 import com.pmdm.utilities.validacion.validadores.ValidaTextoVacio
 
 

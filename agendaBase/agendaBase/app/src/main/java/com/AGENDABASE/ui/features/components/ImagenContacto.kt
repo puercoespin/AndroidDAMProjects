@@ -47,6 +47,7 @@ fun ImagenContacto(
         contentDescription="Imagen contacto",
 
         modifier = Modifier
+            .height(160.dp)
             .clip(CircleShape)
             .aspectRatio(ratio = 1f)
             .background(MaterialTheme.colorScheme.surface)
@@ -55,7 +56,9 @@ fun ImagenContacto(
                 color = MaterialTheme.colorScheme.inversePrimary,
                 shape = CircleShape
             ),
-        contentScale = ContentScale.Crop
+        contentScale = ContentScale.Crop,
+
+
         )
 
 }
@@ -69,7 +72,9 @@ fun ImagenContactoPreviewSinFoto()
             modifier = Modifier
                 .background(MaterialTheme.colorScheme.primary)
                 .height(200.dp)
-                .width(300.dp)
+                .width(300.dp),
+
+
         )
         {
             ImagenContacto(
@@ -89,8 +94,7 @@ fun ImagenContactoPreviewConFotoYFondo()
         Box(
            modifier = Modifier
                .background(MaterialTheme.colorScheme.primary)
-               .width(300.dp)
-               .height(200.dp)
+               .height(150.dp)
                .fillMaxSize()
         )
         {
