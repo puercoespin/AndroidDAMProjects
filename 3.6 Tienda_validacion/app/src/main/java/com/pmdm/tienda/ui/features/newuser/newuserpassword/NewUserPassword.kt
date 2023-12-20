@@ -17,10 +17,11 @@ import com.pmdm.tienda.ui.features.newuser.newuserpassword.NewUserPasswordUiStat
 import com.pmdm.tienda.ui.features.newuser.newuserpassword.ValidacionNewUserPasswordUiState
 
 
+
 @Composable
 fun NuevoUsuarioPassword(
     newUserPasswordUiState: NewUserPasswordUiState,
-    validadorNewUserUiState: ValidacionNewUserPasswordUiState,
+    validadorNewUserPasswordUiState: ValidacionNewUserPasswordUiState,
     newUserPasswordEvent: (NewUserPasswordEvent) -> Unit
 ) {
     Card(
@@ -49,7 +50,7 @@ fun NuevoUsuarioPassword(
                 modifier = Modifier.fillMaxWidth(),
                 label = "Login",
                 emailState = newUserPasswordUiState.login,
-                validacionState = validadorNewUserUiState.validacionLogin,
+                validacionState = validadorNewUserPasswordUiState.validacionLogin,
                 onValueChange = { newUserPasswordEvent(NewUserPasswordEvent.LoginChanged(it)) }
             )
 
@@ -57,7 +58,7 @@ fun NuevoUsuarioPassword(
                 modifier = Modifier.fillMaxWidth(),
                 label = "Password",
                 passwordState = newUserPasswordUiState.password,
-                validacionState = validadorNewUserUiState.validacionPassword,
+                validacionState = validadorNewUserPasswordUiState.validacionPassword,
                 onValueChange = { newUserPasswordEvent(NewUserPasswordEvent.PasswordChanged(it)) }
             )
             Spacer(modifier = Modifier.height(30.dp))

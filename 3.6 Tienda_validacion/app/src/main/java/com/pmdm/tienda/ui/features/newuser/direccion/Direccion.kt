@@ -17,7 +17,7 @@ import com.pmdm.tienda.ui.features.newuser.direccion.ValidacionDireccionUiState
 
 
 @Composable
-fun Direccion(
+fun DireccionScreen(
     direccionUiState: DireccionUiState,
     validadorDireccionUiState: ValidacionDireccionUiState,
     direccionEvent: (DireccionEvent)->Unit
