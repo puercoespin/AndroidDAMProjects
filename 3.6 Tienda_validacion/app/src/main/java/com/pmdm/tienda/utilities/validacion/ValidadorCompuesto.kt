@@ -12,6 +12,7 @@ class ValidadorCompuesto(validador: Validador) : Validador {
             val resultado = it.valida(texto)
             if (resultado.hayError) {
                 return resultado
+                // si hay un solo error, devolverá true el valida de la interfaz Validador de la validación correspondiente en la lista
             }
         }
         return Validacion(false)

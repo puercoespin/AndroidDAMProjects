@@ -34,26 +34,38 @@ import androidx.compose.ui.unit.dp
 import com.pmdm.tienda.ui.features.DatosPersonales
 import com.pmdm.tienda.ui.features.DireccionScreen
 import com.pmdm.tienda.ui.features.NuevoUsuarioPassword
+import com.pmdm.tienda.ui.features.newuser.NewUserUiState
+import com.pmdm.tienda.ui.features.newuser.datospersonales.DatosPersonalesEvent
 import com.pmdm.tienda.ui.features.newuser.datospersonales.DatosPersonalesUiState
 import com.pmdm.tienda.ui.features.newuser.datospersonales.ValidacionDatosPersonalesUiState
+import com.pmdm.tienda.ui.features.newuser.direccion.DireccionEvent
 import com.pmdm.tienda.ui.features.newuser.direccion.DireccionUiState
 import com.pmdm.tienda.ui.features.newuser.direccion.ValidacionDireccionUiState
+import com.pmdm.tienda.ui.features.newuser.newuserpassword.NewUserPasswordEvent
 import com.pmdm.tienda.ui.features.newuser.newuserpassword.NewUserPasswordUiState
 import com.pmdm.tienda.ui.features.newuser.newuserpassword.ValidacionNewUserPasswordUiState
 
 
 @OptIn(ExperimentalFoundationApi::class)
-@Preview(showBackground = true)
 @Composable
-fun NewUserScreen() {
-    //Variables de prueba
-    var datosPersonalesUiState = DatosPersonalesUiState()
-    var validadorDatosPersonalesUiState = ValidacionDatosPersonalesUiState()
-    var direccionUiState = DireccionUiState()
-    var validadorDUiState = ValidacionDireccionUiState()
-    var newUserPasswordUiState = NewUserPasswordUiState()
-    var validadornu = ValidacionNewUserPasswordUiState()
+fun NewUserScreen(
+    newUserUiState: NewUserUiState,
+    datosPersonalesEvent: (DatosPersonalesEvent,) -> Unit,
+    direccionEvent: (DireccionEvent) -> Unit,
+    newUserPasswordEvent: (NewUserPasswordEvent) -> Unit
+    /*
+    datosPersonalesUiState: DatosPersonalesUiState,
+    validadorDatosPersonalesUiState: ValidacionDatosPersonalesUiState,
+    direccionUiState: DireccionUiState,
+    validadorDireccionUiState: ValidacionDireccionUiState,
+    newUserPasswordUiState: NewUserPasswordUiState,
+    validadorNewUserPasswordUiState: ValidacionNewUserPasswordUiState,
+    datosPersonalesEvent: (DatosPersonalesEvent,) -> Unit,
+    direccionEvent: (DireccionEvent) -> Unit,
+    newUserPasswordEvent: (NewUserPasswordEvent) -> Unit
+*/
 
+) {
     // Los puntos no salen abajo por el tamaño de los formularios
     val pagerState = rememberPagerState(pageCount = {
         3
@@ -67,23 +79,23 @@ fun NewUserScreen() {
             {
                 0->{
                     DatosPersonales(
-                        datosPersonalesUIState = datosPersonalesUiState,
-                        validadorDatosPersonalesUIState = validadorDatosPersonalesUiState,
-                        datosPersonalesEvent = {}
+                        datosPersonalesUIState = newUserUiState.datosPersonalesUiState,
+                        validadorDatosPersonalesUIState = newUserUiState.validacionDatosPersonalesUiState,
+                        datosPersonalesEvent = datosPersonalesEvent
                     )
                 }
                 1->{
                     DireccionScreen(
-                        direccionUiState = direccionUiState,
-                        validadorDireccionUiState = validadorDUiState,
-                        direccionEvent = {}
+                        direccionUiState = newUserUiState.direccionUiState,
+                        validadorDireccionUiState = newUserUiState.validacionDireccionUiState,
+                        direccionEvent = direccionEvent
                     )
                 }
                 2->{
                     NuevoUsuarioPassword(
-                        newUserPasswordUiState = newUserPasswordUiState,
-                        validadorNewUserPasswordUiState = validadornu,
-                        newUserPasswordEvent = {}
+                        newUserPasswordUiState = newUserUiState.newUserPasswordUiState,
+                        validadorNewUserPasswordUiState = newUserUiState.validacionNewUserPasswordUiState,
+                        newUserPasswordEvent = newUserPasswordEvent
                     )
                 }
             }

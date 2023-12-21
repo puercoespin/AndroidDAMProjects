@@ -8,12 +8,12 @@ import com.pmdm.tienda.ui.features.newuser.newuserpassword.NewUserPasswordUiStat
 import com.pmdm.tienda.ui.features.newuser.newuserpassword.ValidacionNewUserPasswordUiState
 
 data class NewUserUiState(
-    var datosPersonalesUiState: DatosPersonalesUiState,
-    var direccionUiState: DireccionUiState,
-    var newUserPasswordUiState: NewUserPasswordUiState,
+    var datosPersonalesUiState: DatosPersonalesUiState = DatosPersonalesUiState(),
+    var direccionUiState: DireccionUiState = DireccionUiState(),
+    var newUserPasswordUiState: NewUserPasswordUiState = NewUserPasswordUiState(),
 
-    var validacionDatosPersonalesUiState: ValidacionDatosPersonalesUiState,
-    var validacionDireccionUiState: ValidacionDireccionUiState,
-    var validacionNewUserPasswordUiState: ValidacionNewUserPasswordUiState
+    var validadorDatosPersonalesUiState: ValidacionDatosPersonalesUiState = ValidacionDatosPersonalesUiState(),
+    var validadorDireccionUiState: ValidacionDireccionUiState = ValidacionDireccionUiState(),
+    var validadorNewUserPasswordUiState: ValidacionNewUserPasswordUiState = ValidacionNewUserPasswordUiState()
 
 )

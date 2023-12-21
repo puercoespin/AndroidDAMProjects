@@ -1,4 +1,4 @@
-package com.pmdm.tienda.data.mocks
+package com.pmdm.tienda.data
 
 import com.pmdm.tienda.data.mocks.cliente.ClienteDaoMock
 import javax.inject.Inject
