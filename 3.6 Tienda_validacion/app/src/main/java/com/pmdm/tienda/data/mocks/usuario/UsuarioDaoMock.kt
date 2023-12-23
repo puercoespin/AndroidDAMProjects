@@ -1,7 +1,9 @@
 package com.pmdm.tienda.data.mocks.usuario
 
+import javax.inject.Inject
 
-class UsuarioDaoMock {
+
+class UsuarioDaoMock @Inject constructor() {
     private var usuarios=mutableListOf<UsuarioMock>(
         UsuarioMock("juanjo@gmail.com","juanjo1234"),  UsuarioMock("pepe@gmail.com","pepe1234"), UsuarioMock("xusa@gmail.com","xusa1234")
     )

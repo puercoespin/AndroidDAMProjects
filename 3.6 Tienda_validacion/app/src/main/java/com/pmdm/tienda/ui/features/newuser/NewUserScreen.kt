@@ -50,20 +50,9 @@ import com.pmdm.tienda.ui.features.newuser.newuserpassword.ValidacionNewUserPass
 @Composable
 fun NewUserScreen(
     newUserUiState: NewUserUiState,
-    datosPersonalesEvent: (DatosPersonalesEvent,) -> Unit,
+    datosPersonalesEvent: (DatosPersonalesEvent) -> Unit,
     direccionEvent: (DireccionEvent) -> Unit,
     newUserPasswordEvent: (NewUserPasswordEvent) -> Unit
-    /*
-    datosPersonalesUiState: DatosPersonalesUiState,
-    validadorDatosPersonalesUiState: ValidacionDatosPersonalesUiState,
-    direccionUiState: DireccionUiState,
-    validadorDireccionUiState: ValidacionDireccionUiState,
-    newUserPasswordUiState: NewUserPasswordUiState,
-    validadorNewUserPasswordUiState: ValidacionNewUserPasswordUiState,
-    datosPersonalesEvent: (DatosPersonalesEvent,) -> Unit,
-    direccionEvent: (DireccionEvent) -> Unit,
-    newUserPasswordEvent: (NewUserPasswordEvent) -> Unit
-*/
 
 ) {
     // Los puntos no salen abajo por el tamaño de los formularios
@@ -80,21 +69,21 @@ fun NewUserScreen(
                 0->{
                     DatosPersonales(
                         datosPersonalesUIState = newUserUiState.datosPersonalesUiState,
-                        validadorDatosPersonalesUIState = newUserUiState.validacionDatosPersonalesUiState,
+                        validadorDatosPersonalesUIState = newUserUiState.validadorDatosPersonalesUiState,
                         datosPersonalesEvent = datosPersonalesEvent
                     )
                 }
                 1->{
                     DireccionScreen(
                         direccionUiState = newUserUiState.direccionUiState,
-                        validadorDireccionUiState = newUserUiState.validacionDireccionUiState,
+                        validadorDireccionUiState = newUserUiState.validadorDireccionUiState,
                         direccionEvent = direccionEvent
                     )
                 }
                 2->{
                     NuevoUsuarioPassword(
                         newUserPasswordUiState = newUserUiState.newUserPasswordUiState,
-                        validadorNewUserPasswordUiState = newUserUiState.validacionNewUserPasswordUiState,
+                        validadorNewUserPasswordUiState = newUserUiState.validadorNewUserPasswordUiState,
                         newUserPasswordEvent = newUserPasswordEvent
                     )
                 }

@@ -1,6 +1,8 @@
 package com.pmdm.tienda.data.mocks.cliente
 
-class ClienteDaoMock {
+import javax.inject.Inject
+
+class ClienteDaoMock @Inject constructor() {
 
     private var clientes = mutableListOf(
         ClienteMock(
